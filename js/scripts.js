@@ -1,3 +1,4 @@
+//Array of 4 pokemons
 let pokemonList =[
     {
         name: 'Bulbasaur',
@@ -23,3 +24,13 @@ let pokemonList =[
         types: ['electric']
     }
 ];
+//Printing the pokemon names and there height
+
+for (i=0; i<pokemonList.length; i++){
+    let msg =' ';
+    if(pokemonList[i].height > 1.0)
+    {
+        msg =" - Wow, that's big";
+    }
+    document.write(pokemonList[i].name + ' '  + '(height: ' + pokemonList[i].height + 'm)' + msg + '<br>');
+}
