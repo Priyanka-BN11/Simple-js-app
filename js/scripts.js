@@ -1,4 +1,5 @@
-//Array of 4 pokemons
+//Array in variable pokemonRepository(in IIFE) 
+let pokemonRepository = (function () {
 let pokemonList =[
     {
         name: 'Bulbasaur',
@@ -24,13 +25,30 @@ let pokemonList =[
         types: ['electric']
     }
 ];
-//Printing the pokemon names and there height
-
-for (i=0; i<pokemonList.length; i++){
-    let msg =' ';
-    if(pokemonList[i].height > 1.0)
-    {
-        msg =" - Wow, that's big";
-    }
-    document.write(pokemonList[i].name + ' '  + '(height: ' + pokemonList[i].height + 'm)' + msg + '<br>');
+function add(pokemon){
+    pokemonList.push(pokemon);
 }
+function getAll(){
+    return pokemonList;
+}
+return {
+    add: add,
+    getAll : getAll
+};
+})();
+console.log(pokemonRepository.getAll());
+pokemonRepository.add({name:'Meowth',height:0.4,weight:4.2, type:['normal']});
+console.log(pokemonRepository.getAll());
+//height comparision function
+function loopFunction(pokemons) {
+    document.write(pokemons.name + ' (height: ' + pokemons.height + 'm) ');
+    if (pokemons.height > 3) {
+      document.write(' - WOW,that is a big pokemon!');
+    }
+  document.write('<br>')
+  }
+  
+  //Printing the pokemon names and there height using forEach loop
+pokemonRepository.getAll().forEach(loopFunction);
+
+pokemonRepository.getAll.filter(name == 'Onix')
