@@ -51,4 +51,3 @@ function loopFunction(pokemons) {
   //Printing the pokemon names and there height using forEach loop
 pokemonRepository.getAll().forEach(loopFunction);
 
-pokemonRepository.getAll.filter(name == 'Onix')
