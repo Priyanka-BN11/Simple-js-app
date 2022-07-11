@@ -1,0 +1,12 @@
+.button{
+  color:blue;
+  background-color: orange;
+  text-align:center;
+  display:inline-block;
+  padding:16px 40px;
+  text-decoraction:none;
+  margin: 4px 2px;
+}
+li{
+	list-style-type: none;
+}

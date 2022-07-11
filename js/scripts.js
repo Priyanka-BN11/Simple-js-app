@@ -31,23 +31,44 @@ function add(pokemon){
 function getAll(){
     return pokemonList;
 }
+
+function showDetails(pokemon){
+ console.log(pokemon);
+}
 return {
     add: add,
-    getAll : getAll
+    getAll : getAll,
+    addListItem: addListItem,
+    showDetails: showDetails
 };
 })();
-console.log(pokemonRepository.getAll());
+
 pokemonRepository.add({name:'Meowth',height:0.4,weight:4.2, type:['normal']});
 console.log(pokemonRepository.getAll());
 //height comparision function
-function loopFunction(pokemons) {
-    document.write(pokemons.name + ' (height: ' + pokemons.height + 'm) ');
-    if (pokemons.height > 3) {
-      document.write(' - WOW,that is a big pokemon!');
-    }
-  document.write('<br>')
+function addListItem(pokemons) {
+    let ul = document.querySelector('.pokemon-list');
+  //creating a list element
+  let listItem = document.createElement('li');
+  //creating a button element
+  let button = document.createElement('button');
+  button.innerText = pokemons.name;
+  //adding classname to button
+   button.classList.add('button');
+   //appendng button to listItem
+   listItem.appendChild(button);
+   //appending listitem to ul
+   ul.appendChild(listItem);
+   //adding eventlistener for button click
+   button.addEventListener('click', function(event){
+    // event.preventDefault();
+    button.click();
+    pokemonRepository.showDetails(pokemons);
+  })
   }
-  
   //Printing the pokemon names and there height using forEach loop
-pokemonRepository.getAll().forEach(loopFunction);
+pokemonRepository.getAll().forEach(function(pokemons){
+//on pokemon name Button clicks displays pokemons details
+pokemonRepository.addListItem(pokemons);
+});
 
