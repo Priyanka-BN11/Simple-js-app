@@ -51,7 +51,7 @@ function addListItem(pokemons) {
    //adding eventlistener for button click
    button.addEventListener('click', function(event){
     // event.preventDefault();
-    button.click();
+    
     showDetails(pokemons);
   })
   }
