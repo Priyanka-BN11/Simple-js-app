@@ -35,17 +35,6 @@ function getAll(){
 function showDetails(pokemon){
  console.log(pokemon);
 }
-return {
-    add: add,
-    getAll : getAll,
-    addListItem: addListItem,
-    showDetails: showDetails
-};
-})();
-
-pokemonRepository.add({name:'Meowth',height:0.4,weight:4.2, type:['normal']});
-console.log(pokemonRepository.getAll());
-//height comparision function
 function addListItem(pokemons) {
     let ul = document.querySelector('.pokemon-list');
   //creating a list element
@@ -63,9 +52,21 @@ function addListItem(pokemons) {
    button.addEventListener('click', function(event){
     // event.preventDefault();
     button.click();
-    pokemonRepository.showDetails(pokemons);
+    showDetails(pokemons);
   })
   }
+return {
+    add: add,
+    getAll : getAll,
+    addListItem: addListItem,
+    showDetails: showDetails
+};
+})();
+
+pokemonRepository.add({name:'Meowth',height:0.4,weight:4.2, type:['normal']});
+console.log(pokemonRepository.getAll());
+//height comparision function
+
   //Printing the pokemon names and there height using forEach loop
 pokemonRepository.getAll().forEach(function(pokemons){
 //on pokemon name Button clicks displays pokemons details
