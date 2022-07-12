@@ -33,25 +33,32 @@ function getAll(){
 }
 
 function showDetails(pokemon){
+
  console.log(pokemon);
+}
+function imageDisplay(){
+  //creating a image element
+  let img = new Image();
+  img.src = "https://img.captain-droid.com/wp-content/uploads/2017/04/pokemonwallpaper-icon.png.webp";
+  //displays on body of the html page
+  document.body.appendChild(img);
 }
 function addListItem(pokemons) {
     let ul = document.querySelector('.pokemon-list');
-  //creating a list element
-  let listItem = document.createElement('li');
-  //creating a button element
-  let button = document.createElement('button');
-  button.innerText = pokemons.name;
-  //adding classname to button
-   button.classList.add('button');
-   //appendng button to listItem
-   listItem.appendChild(button);
-   //appending listitem to ul
-   ul.appendChild(listItem);
-   //adding eventlistener for button click
-   button.addEventListener('click', function(event){
-    // event.preventDefault();
-    
+    //creating a list element
+    let listItem = document.createElement('li');
+    //creating a button element
+    let button = document.createElement('button');
+    button.innerText = pokemons.name;
+    //adding classname to button
+    button.classList.add('button');
+    //appendng button to listItem
+    listItem.appendChild(button);
+    //appending listitem to ul
+    ul.appendChild(listItem);
+    //adding eventlistener for button click
+    button.addEventListener('click', function(event){
+    event.preventDefault();
     showDetails(pokemons);
   })
   }
@@ -59,17 +66,20 @@ return {
     add: add,
     getAll : getAll,
     addListItem: addListItem,
-    showDetails: showDetails
+    showDetails: showDetails,
+    imageDisplay: imageDisplay
 };
 })();
 
 pokemonRepository.add({name:'Meowth',height:0.4,weight:4.2, type:['normal']});
 console.log(pokemonRepository.getAll());
-//height comparision function
 
-  //Printing the pokemon names and there height using forEach loop
+//Printing the pokemon names and there height using forEach loop
 pokemonRepository.getAll().forEach(function(pokemons){
 //on pokemon name Button clicks displays pokemons details
 pokemonRepository.addListItem(pokemons);
 });
+
+//calling imageDisplay function
+pokemonRepository.imageDisplay();
 
