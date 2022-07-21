@@ -2,15 +2,23 @@
   color:blue;
   background-color: orange;
   text-align:center;
-  display:inline-block;
+ /* display:inline-block;*/
   padding:16px 40px;
-  text-decoraction:none;
+ 
   margin: 4px 2px;
+  width: 200px;
 }
 li{
 	list-style-type: none;
 }
-#modal-container {
+body{
+  text-align: center;
+}
+.center{
+  display:flex;
+  justify-content:center;
+}
+/*#modal-container {
   display:none;
   position: fixed;
   padding: 20px;
@@ -21,19 +29,16 @@ li{
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   
-  /* to show it above other content */
+   to show it above other content 
   z-index: 999; 
   
   /* to allow scrolling if the screen is not high enough*/
-  overflow: auto; 
+ /* overflow: auto; */
   
   /* this is used to center the modal */
 /*   display: grid; */
-  text-align: center;
-}
-#modal-container.is-visible{
-  display:block;
-}
+/*  text-align: center;}
+*/
 .modal {
   margin: auto;
   display: inline-block;
@@ -45,13 +50,9 @@ li{
   text-align: left;
 }
 
-.modal-close {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #777;
-  text-decoration: underline;
+.modal-open {
+ background-color: grey;
+ color: black;
 }
 
 .modal h1 {
