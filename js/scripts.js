@@ -44,15 +44,19 @@ function addListItem(pokemons) {
     listItem.appendChild(button);
     //appending listitem to ul
     ul.appendChild(listItem);
-    $('[data-toggle="modal"]').on('click', function(){
-      showDetails(pokemons).forEach(myfunction)
-      console.log(pokemons);
-      let targetSelector = $(this).attr('data-target');
-      $(targetSelector).modal('show');
-      });
-    
+    listButtonEventListener(button, pokemons);
+    // $('[data-toggle="modal"]').on('click', function(){
+    //   showDetails();
+    //   console.log(pokemons);
+    //   let targetSelector = $(this).attr('data-target');
+    //   $(targetSelector).modal('show');
+    //   }); 
   }
-  
+  function listButtonEventListener(listButton, pokemon) {
+    listButton.addEventListener('click', function() {
+      showDetails(pokemon);
+    });
+  }
   function loadList(){
     return fetch(apiUrl).then(function(response)
     {
