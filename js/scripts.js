@@ -1,7 +1,7 @@
 //Array in variable pokemonRepository(in IIFE) 
 let pokemonRepository = (function () {
 let pokemonList =[ ];
-let apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=250';
 // let button = document.createElement('button');
 function add(pokemon){
    if (
@@ -16,41 +16,27 @@ function add(pokemon){
 function getAll(){
     return pokemonList;
 }
-function imageDisplay(){
-  //creating a image element
-  let img = new Image();
-  img.src = "https://img.captain-droid.com/wp-content/uploads/2017/04/pokemonwallpaper-icon.png.webp";
-  let imageElement = document.querySelector('#Image');
-  let pokemonList = document.querySelector('.pokemon-list');
-  pokemonList.before(img); 
-}
 
-function addListItem(pokemons) {
-  
+
+function addListItem(pokemons) { 
     let ul = document.querySelector('.pokemon-list');
     //creating a list element
     let listItem = document.createElement('li');
     //creating a button element
     let button = document.createElement('button');
-    button.innerText = pokemons.name;
+    button.innerText = pokemons.name.toUpperCase();
     //adding classname to button
-    button.classList.add('button', 'btn', 'btn-primary');
+    button.classList.add('button', 'btn', 'btn-primary','cursive');
     //adding an attributes to the button 
     button.setAttribute("data-toggle", "modal");
     button.setAttribute("data-target", "#exampleModal");
     //adding class to listItem 
-    listItem.classList.add('group-list-item','list-inline');  
+    listItem.classList.add('group-list-item','nav-item');  
     //appendng button to listItem
     listItem.appendChild(button);
     //appending listitem to ul
     ul.appendChild(listItem);
     listButtonEventListener(button, pokemons);
-    // $('[data-toggle="modal"]').on('click', function(){
-    //   showDetails();
-    //   console.log(pokemons);
-    //   let targetSelector = $(this).attr('data-target');
-    //   $(targetSelector).modal('show');
-    //   }); 
   }
   function listButtonEventListener(listButton, pokemon) {
     listButton.addEventListener('click', function() {
@@ -98,23 +84,20 @@ function loadDetails(pokemon){
     let img = new Image();
     img.src = pokemon.imageUrl;
     let pokemonname= document.createElement('h2');
-    pokemonname.innerHTML= `<h2>Name:${pokemon.name}<h2>`;
+    pokemonname.innerHTML= `<h2>${pokemon.name.toUpperCase()}<h2>`;
     let pokemonheight = document.createElement('h4');
     pokemonheight.innerHTML= `<h4>Height:${pokemon.height}</h4>`;
     let pokemonweight = document.createElement('h4');
     pokemonweight.innerHTML= `<h4>Weight:${pokemon.weight} </h4>`;
     let pokemontypes = document.createElement('h4');
     pokemontypes.innerHTML = `<h4>Types:${pokemon.types}</h4>`;
-
     //appending elements to modal(body,title)
     modalBody.append(img);
     modalBody.append(pokemonheight);
     modalBody.append(pokemonweight);
     modalBody.append(pokemontypes);
     modalTitle.append(pokemonname);
-    
     });
-    
   }
 return {
     add: add,
@@ -122,8 +105,7 @@ return {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showDetails: showDetails,
-    imageDisplay: imageDisplay
+    showDetails: showDetails
 };
 })();
 //Printing the pokemon names and there height using forEach loop
@@ -131,9 +113,8 @@ pokemonRepository.loadList().then(function(){
     pokemonRepository.getAll().forEach(function(pokemons){
     //displays pokemon name Button 
     pokemonRepository.addListItem(pokemons);
-    
     }); 
 });
-pokemonRepository.imageDisplay();
+
 
 
