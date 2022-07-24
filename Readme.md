@@ -7,3 +7,5 @@ Displays:
 3. Pokemon Weight
 4. Pokemon Types
 5. Pokemon Image
+
+Pokemon details can be searched using pokemon name. 
