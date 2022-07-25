@@ -14,6 +14,6 @@ Pokemon details can be searched using pokemon name.
 1. Screenshort 1
 ![Alt text](https://github.com/Priyanka-BN11/Simple-js-app/blob/main_pg/screenshorts/Screenshot1.PNG)
 2. Screenshort 2
-![Alt text](https://github.com/Priyanka-BN11/Simple-js-app/blob/main_pg/screenshorts/Screenshot2.PNG)
+![Alt text](https://github.com/Priyanka-BN11/Simple-js-app/blob/main_pg/screenshorts/Screenshort2.PNG)
 3. Screenshort 3
-![Alt text](https://github.com/Priyanka-BN11/Simple-js-app/blob/main_pg/screenshorts/Screenshot3.PNG)
+![Alt text](https://github.com/Priyanka-BN11/Simple-js-app/blob/main_pg/screenshorts/Screenshort3.PNG)
