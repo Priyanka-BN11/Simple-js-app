@@ -1,5 +1,5 @@
 # Project Title
-# Pokemon App
+## Pokemon App
 ## Description
 Displays:
 1. Pokemon Name
