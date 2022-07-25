@@ -9,7 +9,8 @@ Displays:
 5. Pokemon Image
 
 Pokemon details like height, weight, types and image can be searched using pokemon name.
-##Pokemon app link
+
+## Pokemon app link
 https://priyanka-bn11.github.io/simple-js-app/
 
 ## Screenshots
