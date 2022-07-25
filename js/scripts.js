@@ -1,32 +1,32 @@
 //Array in variable pokemonRepository(in IIFE) 
-let pokemonRepository = (function () {
-let pokemonList =[ ];
-let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=900';
+const pokemonRepository = (function () {
+const pokemonList =[ ];
+const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=900';
 function add(pokemon){
    if (
-      typeof pokemon === "object" &&
-      "name" in pokemon
+      typeof pokemon === 'object'&&
+      'name' in pokemon
     ) {
       pokemonList.push(pokemon);
     } else {
-      console.log("pokemon is not correct");
+      console.log('pokemon is not correct');
     }
 }
 function getAll(){
     return pokemonList;
 }
 function addListItem(pokemons) { 
-    let ul = document.querySelector('.pokemon-list');
+    const ul = document.querySelector('.pokemon-list');
     //creating a list element
-    let listItem = document.createElement('li');
+    const listItem = document.createElement('li');
     //creating a button element
-    let button = document.createElement('button');
+    const button = document.createElement('button');
     button.innerText = pokemons.name.toUpperCase();
     //adding classname to button
     button.classList.add('button', 'btn', 'btn-primary');
     //adding an attributes to the button 
-    button.setAttribute("data-toggle", "modal");
-    button.setAttribute("data-target", "#exampleModal");
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#pokemonModal');
     //adding class to listItem 
     listItem.classList.add('group-list-item','list');  
     //appendng button to listItem
@@ -47,7 +47,7 @@ function addListItem(pokemons) {
         return response.json();
     }).then(function (json){
         json.results.forEach(function (item){
-            let pokemon = {
+            const pokemon = {
                 name: item.name,
                 detailsUrl: item.url
             };
@@ -59,7 +59,7 @@ function addListItem(pokemons) {
     })
 }
 function loadDetails(pokemon){
- let url = pokemon.detailsUrl;
+ const url = pokemon.detailsUrl;
  return fetch(url).then(function (response){
     return response.json();  
 }).then(function (details){
@@ -73,21 +73,20 @@ function loadDetails(pokemon){
 }
   function showDetails(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
-    // console.log(pokemon);
-    let modalBody = $(".modal-body");
-    let modalTitle = $(".modal-title");
+    const modalBody = $('.modal-body');
+    const modalTitle = $('.modal-title');
     modalTitle.empty();
     modalBody.empty();
  
-    let img = new Image();
+    const img = new Image();
     img.src = pokemon.imageUrl;
-    let pokemonname= document.createElement('h2');
+    const pokemonname= document.createElement('h2');
     pokemonname.innerHTML= `<h2>${pokemon.name.toUpperCase()}<h2>`;
-    let pokemonheight = document.createElement('h4');
+    const pokemonheight = document.createElement('h4');
     pokemonheight.innerHTML= `<h4>Height:${pokemon.height}</h4>`;
-    let pokemonweight = document.createElement('h4');
+    const pokemonweight = document.createElement('h4');
     pokemonweight.innerHTML= `<h4>Weight:${pokemon.weight} </h4>`;
-    let pokemontypes = document.createElement('h4');
+    const pokemontypes = document.createElement('h4');
     pokemontypes.innerHTML = `<h4>Types:${pokemon.types}</h4>`;
     //appending elements to modal(body,title)
     modalBody.append(img);
@@ -115,11 +114,11 @@ pokemonRepository.loadList().then(function(){
 });
 
 //search function
-function searchFunction(event) {
-  let pokemonButton = document.getElementsByClassName('button');
+function searchFunction() {
+  const pokemonButton = document.getElementsByClassName('button');
 
-  let filter =$('#myInput').val().toLowerCase();
-  for (let pokemonName of pokemonButton) {
+  const filter =$('#myInput').val().toLowerCase();
+  for (const pokemonName of pokemonButton) {
     let pokemonname = pokemonName.textContent.toLowerCase();
     console.log(pokemonname);
     if (pokemonname.includes(filter)) {
@@ -130,5 +129,5 @@ function searchFunction(event) {
   }
 }
 
-let search = document.getElementById('myInput');
+const search = document.getElementById('myInput');
 search.addEventListener('keyup', searchFunction);
